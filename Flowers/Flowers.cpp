@@ -9,7 +9,7 @@ using namespace std;
 
 
 int generateMaze(int numNodes) {
-
+	printf("Maze Created")
 }
 
 
