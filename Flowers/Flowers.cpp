@@ -46,7 +46,6 @@ MazeNode* generateMaze(int numNodes) {
 		//set next to the next node
 		//TODO - check needed for existence of direction pointer existence
 		next = connection;
-
 		
 	}
 
