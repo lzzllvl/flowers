@@ -2,6 +2,24 @@
 #include "mazenode.h"
 
 
+//constructor functions
+MazeNode::MazeNode() {
+	left = nullptr;
+	right = nullptr;
+	up = nullptr;
+	down = nullptr;
+}
+
+//boolean argument constructor overload
+MazeNode::MazeNode(bool cheese) {
+	left = nullptr;
+	right = nullptr;
+	up = nullptr;
+	down = nullptr;
+	hasCheese = cheese;
+}
+
+
 //function definitions for the mazeNodes
 void MazeNode::setLeft(MazeNode* nextNode)
 {
@@ -22,7 +40,6 @@ void MazeNode::setDown(MazeNode* nextNode)
 {
 	down = nextNode;
 }
-
 
 
 //consider making these inline functions in mazenode.h

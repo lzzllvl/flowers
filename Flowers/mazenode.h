@@ -7,12 +7,18 @@
 class MazeNode {
 	private:
 		//four sides simulates a rectangular maze
-		MazeNode* left = nullptr;
-		MazeNode* right = nullptr;
-		MazeNode* up = nullptr;
-		MazeNode* down = nullptr;
+		MazeNode* left;
+		MazeNode* right;
+		MazeNode* up;
+		MazeNode* down;
 		bool hasCheese;
-	public: 
+
+
+	public:
+		//constructors
+		MazeNode();
+		MazeNode(bool cheese);
+
 		//setters
 		void setLeft(MazeNode* nextNode);
 		void setRight(MazeNode* nextNode);

@@ -17,12 +17,19 @@ MazeNode* generateMaze(int numNodes) {
 	MazeNode* next = start;
 
 	while (--numNodes) {
+		//create next node
+		MazeNode* connection;
+		if(numNodes == 0){
+			//set the cheese for the last node 
+			connection = new MazeNode(true);
+		}
+		else {
+			connection = new MazeNode;
+		}
+
 		//Random number corresponding to sides of the Maze node
 		srand(time(NULL));
 		int which = rand() % 4 + 1;
-
-		//create next node
-		MazeNode* connection = new MazeNode;
 
 		switch (which) {
 			//set both forward and backward pointers for both connected nodes
