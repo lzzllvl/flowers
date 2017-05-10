@@ -11,7 +11,7 @@ class MazeNode {
 		MazeNode* right;
 		MazeNode* up;
 		MazeNode* down;
-		bool hasCheese;
+		bool hasCheese = false;
 
 
 	public:

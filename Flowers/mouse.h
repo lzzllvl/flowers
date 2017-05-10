@@ -10,21 +10,41 @@ private:
 	int moveCounter;
 	struct historyNode {
 		char move;
-		bool isLast;
-		struct historyNode* next;
-	} llhistory;
+		bool isLast = false;
+		struct historyNode* next = nullptr;
+	};
+
+	struct historyNode* historyLocation;
+	struct historyNode* historyStart;
+
+	//weighted options for each direction
+	double w_up, w_down, w_left, w_right;
+
+	MazeNode* location;
 	
 
 public:
 	Mouse();
 
+	void setLocation(MazeNode* nextLoc);
+
 	void incrementCounter() { moveCounter++; };
 
 	bool cheeseCheck(MazeNode* current);
 
-	char getTurnOptions(MazeNode* current);
+	bool canTurnLeft(MazeNode* current);
+
+	bool canTurnRight(MazeNode* current);
+
+	bool canTurnUp(MazeNode* current);
+
+	bool canTurnDown(MazeNode* current);
 
 	void makeTurn(MazeNode* current, char direction);
+
+	void foundCheese(MazeNode* current);
+
+	char chooseDirection(MazeNode* current);
 
 	void effeciencyAnalysisUpdate();
 
@@ -34,4 +54,4 @@ public:
 
 
 
-#endif ALGERNON_H
+#endif MOUSE_H
