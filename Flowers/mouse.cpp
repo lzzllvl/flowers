@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "mouse.h"
+#include <vector>
 
 #define MAX_SIDES 4
 
@@ -41,7 +42,7 @@ bool canTurnDown(MazeNode* current)
 
 void Mouse::makeTurn(MazeNode* current, char direction)
 {
-	moveCounter++;
+	incrementCounter();
 	switch (direction) {
 	case 'l':
 		//setting the new mouse location to next maze node
@@ -67,11 +68,36 @@ void Mouse::makeTurn(MazeNode* current, char direction)
 	//create next history node
 	struct historyNode nextNode;
 	historyLocation->next = &nextNode;
+	nextNode.prev = historyLocation;
 	historyLocation = historyLocation->next;
+	
 }
 
 char Mouse::chooseDirection(MazeNode* current) {
 
+	std::vector<char> choices;
+
+	if (canTurnDown(current)) {
+		choices.push_back('d');
+	}
+	if (canTurnUp(current)) {
+		choices.push_back('u');
+	}
+	if (canTurnLeft(current)) {
+		choices.push_back('l');
+	}
+	if (canTurnRight(current)) {
+		choices.push_back('r');
+	}
+
+	int length = choices.size();
+	int i = 0;
+	double current_weight;
+	do {
+		switch (choices[i])
+		i++; 
+	} (while std::find(choices.begin(), choices.end(), ))
+	return 'l';
 }
 
 void Mouse::foundCheese(MazeNode* current) {

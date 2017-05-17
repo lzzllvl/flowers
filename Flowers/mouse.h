@@ -11,7 +11,9 @@ private:
 	struct historyNode {
 		char move;
 		bool isLast = false;
+		//doubly linked list
 		struct historyNode* next = nullptr;
+		struct historyNode* prev = nullptr;
 	};
 
 	struct historyNode* historyLocation;
