@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "mouse.h"
 #include <vector>
+#include <map>
+#include <time.h>
 
 #define MAX_SIDES 4
 
@@ -91,12 +93,33 @@ char Mouse::chooseDirection(MazeNode* current) {
 	}
 
 	int length = choices.size();
-	int i = 0;
-	double current_weight;
-	do {
-		switch (choices[i])
-		i++; 
-	} (while std::find(choices.begin(), choices.end(), ))
+
+	std::map<char, double> weight_map;
+	
+	for (int i = 0; i < length; i++) {
+		switch (choices[i]) {
+		case 'l':
+			weight_map['l'] = w_left;
+			break;
+		case 'u':
+			weight_map['u'] = w_up;
+			break;
+		case 'd':
+			weight_map['d'] = w_down;
+			break;
+		case 'r':
+			weight_map['r'] = w_right;
+			break;
+		default:
+			break;
+		}
+	}
+	std::map<char, double>::iterator iter = weight_map.begin();
+	srand((int)time(NULL));
+	int choice = (rand() % 100 + 1);
+	while (iter != weight_map.end()) {
+		
+	}
 	return 'l';
 }
 

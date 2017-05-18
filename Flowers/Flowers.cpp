@@ -28,7 +28,7 @@ MazeNode* generateMaze(int numNodes) {
 		}
 
 		//Random number corresponding to sides of the Maze node
-		srand(time(NULL));
+		srand((int) time(NULL));
 		int which = rand() % 4 + 1;
 
 		switch (which) {
