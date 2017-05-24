@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "mazenode.h"
+#include "mouse.h"
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -61,10 +62,97 @@ MazeNode* generateMaze(int numNodes) {
 
 
 
+
+
+
 int main()
 {
-	MazeNode* maze = generateMaze(2);
-	
+	MazeNode* a = new MazeNode;
+	MazeNode* b = new MazeNode;
+	MazeNode* c = new MazeNode;
+	MazeNode* d = new MazeNode;
+	MazeNode* e = new MazeNode;
+	MazeNode* f = new MazeNode;
+	MazeNode* g = new MazeNode;
+	MazeNode* h = new MazeNode;
+	MazeNode* i = new MazeNode;
+	MazeNode* j = new MazeNode;
+	MazeNode* k = new MazeNode;
+	MazeNode* l = new MazeNode;
+	MazeNode* m = new MazeNode;
+	MazeNode* n = new MazeNode;
+	MazeNode* o = new MazeNode;
+	MazeNode* p = new MazeNode;
+	MazeNode* q = new MazeNode(true);
+	MazeNode* r = new MazeNode;
+	MazeNode* s = new MazeNode;
+	MazeNode* t = new MazeNode;
+	MazeNode* u = new MazeNode;
+	MazeNode* v = new MazeNode;
+	MazeNode* w = new MazeNode;
+	MazeNode* x = new MazeNode;
+	a->setRight(b);
+	b->setLeft(a);
+	b->setDown(h);
+	b->setRight(c);
+	c->setLeft(b);
+	c->setDown(i);
+	d->setDown(j);
+	d->setRight(e);
+	e->setLeft(d);
+	e->setRight(f);
+	f->setLeft(e);
+	g->setDown(m);
+	g->setRight(h);
+	h->setLeft(g);
+	h->setUp(b);
+	i->setUp(c);
+	i->setRight(j);
+	i->setDown(o);
+	j->setUp(d);
+	j->setDown(p);
+	j->setLeft(i);
+	j->setRight(k);
+	k->setLeft(j);
+	k->setRight(l);
+	l->setLeft(k);
+	l->setDown(r);
+	m->setUp(g);
+	m->setRight(n);
+	m->setDown(s);
+	n->setLeft(m);
+	n->setDown(t);
+	n->setRight(o);
+	o->setUp(i);
+	o->setLeft(n);
+	p->setDown(v);
+	p->setUp(j);
+	q->setRight(r);
+	r->setUp(l);
+	r->setDown(x);
+	r->setLeft(q);
+	s->setUp(m);
+	s->setRight(t);
+	t->setLeft(s);
+	t->setRight(u);
+	t->setUp(n);
+	u->setRight(v);
+	u->setLeft(t);
+	v->setLeft(u);
+	v->setUp(p);
+	w->setRight(x);
+	x->setLeft(w);
+	x->setUp(r);
+
+	Mouse algernon = Mouse();
+	algernon.setLocation(a);
+	for (int i = 0; i < 5; i++) {
+		while (algernon.isRunning()) {
+			algernon.runMaze();
+		}
+		algernon.reset();
+		algernon.setLocation(a);
+	}
     return 0;
 }
 

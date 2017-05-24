@@ -2,12 +2,16 @@
 #ifndef MOUSE_H
 #define MOUSE_H
 #include "mazenode.h"
-
+#include <map>
 
 
 class Mouse {
 private:
 	int moveCounter;
+	int multipleMoveCounter;
+	int numRuns; 
+	double averageMoveCount; 
+
 	struct historyNode {
 		char move;
 		bool isLast = false;
@@ -21,18 +25,27 @@ private:
 
 	//weighted options for each direction
 	double w_up, w_down, w_left, w_right;
+	//how much to change by
+	double increaser, decreaser;
 
 	MazeNode* location;
+
+	//map for backwards moves
+	std::map<char, char> opposites;
+
+	bool running; 
 	
 
 public:
 	Mouse();
 
+	bool isRunning() { return running; };
+
 	void setLocation(MazeNode* nextLoc);
 
 	void incrementCounter() { moveCounter++; };
 
-	bool cheeseCheck(MazeNode* current);
+	bool cheeseCheck();
 
 	bool canTurnLeft(MazeNode* current);
 
@@ -44,16 +57,20 @@ public:
 
 	void makeTurn(MazeNode* current, char direction);
 
-	void foundCheese(MazeNode* current);
+	void runMaze();
 
 	char chooseDirection(MazeNode* current);
+	
+	void decreaseWeight(char which);
 
-	void effeciencyAnalysisUpdate();
+	void increaseWeight(char which);
+
+	void analyzeMoveWeights(historyNode* loc);
+
+	void manageDeltas();
+
+	void reset();
 
 };
-
-
-
-
 
 #endif MOUSE_H
