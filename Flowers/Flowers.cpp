@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "mazenode.h"
 #include "mouse.h"
+#include <stdio.h>
+#include <windows.h>
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -52,7 +54,7 @@ MazeNode* generateMaze(int numNodes) {
 				break;
 		}
 		//set next to the next node
-		//TODO - check needed for existence of direction pointer existence
+		
 		next = connection;
 		
 	}
@@ -67,6 +69,7 @@ MazeNode* generateMaze(int numNodes) {
 
 int main()
 {
+	//generate maze nodes
 	MazeNode* a = new MazeNode;
 	MazeNode* b = new MazeNode;
 	MazeNode* c = new MazeNode;
@@ -91,6 +94,8 @@ int main()
 	MazeNode* v = new MazeNode;
 	MazeNode* w = new MazeNode;
 	MazeNode* x = new MazeNode;
+
+	//connect them
 	a->setRight(b);
 	b->setLeft(a);
 	b->setDown(h);
@@ -144,14 +149,17 @@ int main()
 	x->setLeft(w);
 	x->setUp(r);
 
-	Mouse algernon = Mouse();
-	algernon.setLocation(a);
-	for (int i = 0; i < 5; i++) {
-		while (algernon.isRunning()) {
-			algernon.runMaze();
+	
+
+	for (int i = 0; i < 10; i++) {
+		Mouse* algernon = new Mouse;
+		algernon->setLocation(a);
+		while (algernon->isRunning()) {
+			algernon->runMaze();
 		}
-		algernon.reset();
-		algernon.setLocation(a);
+		//reset mouse and place at start of maze
+		delete algernon;
+	//	Sleep(5000);
 	}
     return 0;
 }

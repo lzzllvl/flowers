@@ -2,6 +2,7 @@
 #include "mouse.h"
 #include <vector>
 #include <map>
+#include <stdlib.h>
 #include <time.h>
 
 #define MAX_SIDES 4
@@ -142,6 +143,7 @@ char Mouse::chooseDirection(MazeNode* current)
 			break;
 		}
 	}
+	//map weights to chars
 	std::map<char, double>::iterator iter = weight_map.begin();
 
 	double total_prob = 0.0; 
@@ -149,9 +151,13 @@ char Mouse::chooseDirection(MazeNode* current)
 		total_prob += iter->second;
 		iter++; 
 	}
-	srand((int)time(NULL));
+	unsigned int temp = time(NULL);
+	//while (temp == time(NULL)) {
+		//printf("%d\n", temp);
+	//}
+	srand((unsigned)time(NULL));
 	int choice = (rand() % (int)(total_prob * 100));
-
+	//printf("Random Choice: %d\n", choice);
 	iter = weight_map.begin();
 	int range = (int)(iter->second * 100);
 	do {
@@ -203,6 +209,7 @@ void Mouse::increaseWeight(char which) {
 		double amount = increaser;
 		switch (which) {
 		case 'l':
+			
 			w_left += amount;
 			break;
 		case 'r':
@@ -276,9 +283,21 @@ void Mouse::manageDeltas() {
 			}
 		}
 	}
+	 
 }
 
 void Mouse::reset() {
+	
+	/*historyNode* liberator; 
+	liberator = historyStart;
+	int i = 0;
+	//while (i < moveCounter) {
+		//historyNode* temp = liberator->next;
+		//free(liberator);
+		//liberator = temp; 
+		i++;
+	}
+	free(liberator); // last one */
 	moveCounter = 0;
 	struct historyNode nextStart;
 	historyStart = &nextStart;
